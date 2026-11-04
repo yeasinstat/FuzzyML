@@ -304,3 +304,9 @@ html, body { overflow-x: hidden; }
 .shiny-notification-error { background: #fdecec; border-left-color: #d32f2f; color: #7f1d1d; }
 .shiny-notification-close { color: var(--muted); }
 .progress-bar { background: linear-gradient(90deg, var(--teal), var(--gold)) !important; }
+
+/* team: centred rows of three (5 members = 3 + 2) */
+.dev-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 26px; }
+.dev-grid .dev { flex: 0 1 calc((100% - 52px) / 3); min-width: 260px; }
+@media (max-width: 992px) { .dev-grid .dev { flex-basis: calc((100% - 26px) / 2); } }
+@media (max-width: 640px) { .dev-grid .dev { flex-basis: 100%; } }

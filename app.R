@@ -367,13 +367,14 @@ instructions_tab <- tabPanel(
 )
 
 # ---------------- DEVELOPERS ----------------
-dev_card <- function(img, name, role, email, scholar) {
+dev_card <- function(img, name, role, email = NULL, scholar = NULL,
+                     org = "ICAR-Indian Agricultural Statistics Research Institute, New Delhi") {
   div(class = "dev", div(class = "band"), tags$img(src = img, alt = name),
       div(class = "body", h4(name), div(class = "role", role),
-          div(class = "org", "ICAR-Indian Agricultural Statistics Research Institute, New Delhi"),
+          div(class = "org", org),
           div(class = "links",
-              tags$a(class = "mail", href = paste0("mailto:", email), icon("envelope"), email),
-              tags$a(class = "gs", href = scholar, target = "_blank", icon("graduation-cap"), "Google Scholar profile"))))
+              if (!is.null(email)) tags$a(class = "mail", href = paste0("mailto:", email), icon("envelope"), email),
+              if (!is.null(scholar)) tags$a(class = "gs", href = scholar, target = "_blank", icon("graduation-cap"), "Google Scholar profile"))))
 }
 
 developers_tab <- tabPanel(
@@ -388,7 +389,10 @@ developers_tab <- tabPanel(
           dev_card("img/ranjit_kumar_paul.jpg", "Dr. Ranjit Kumar Paul", "ICAR National Fellow", "ranjitstat@gmail.com",
                    "https://scholar.google.com/citations?user=wBWuZJgAAAAJ&hl=en"),
           dev_card("img/pushkar_bora.jpg", "Pushkar Bora", "Junior Research Fellow", "borapushkar1999@gmail.com",
-                   "https://scholar.google.com/citations?user=xVIXGlwAAAAJ&hl=en"))))
+                   "https://scholar.google.com/citations?user=xVIXGlwAAAAJ&hl=en"),
+          dev_card("img/anita_sarkar.jpg", "Anita Sarkar", "Student"),
+          dev_card("img/amrit_kumar_paul.jpg", "Dr. Amrit Kumar Paul", "Principal Scientist", "amritkumarpaul@iasri.res.in",
+                   "https://scholar.google.com/citations?user=a7vv3nQAAAAJ&hl=en"))))
 
 ui <- tagList(
   tags$head(
